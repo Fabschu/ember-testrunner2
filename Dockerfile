@@ -6,6 +6,8 @@ RUN npm install -g bower@1.7.1
 RUN npm install -g phantomjs@1.9.19
 RUN npm config set loglevel error --global
 
+RUN echo '{ "allow_root": true }' > /root/.bowerrc
+
 RUN \
 	git clone https://github.com/facebook/watchman.git &&\
 	cd watchman &&\
