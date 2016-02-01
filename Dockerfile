@@ -15,7 +15,7 @@ RUN \
 	make &&\
 	make install
 
-WORKDIR /app
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-ENTRYPOINT ["/usr/local/bin/ember"]
-CMD ["test"]
+CMD ["npm", "start"]
