@@ -5,7 +5,7 @@ MAINTAINER Sven Lückenbach <sven@lueckenba.ch>
 RUN apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 RUN apt-get update && \
-	apt-get install -y nodejs build-essential automake autoconf git && \
+	apt-get install -y nodejs build-essential libfontconfig libfreetype6 libfontconfig1-dev hrpath libssl-dev libxft-dev automake autoconf git && \
 	apt-get clean
 
 # Global deps
