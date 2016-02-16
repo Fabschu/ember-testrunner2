@@ -4,6 +4,7 @@ MAINTAINER Sven Lückenbach <sven@lueckenba.ch>
 RUN npm install -g ember-cli@1.13.15
 RUN npm install -g bower@1.7.1
 RUN npm install -g phantomjs@1.9.19
+RUN npm install -g xo
 RUN npm config set loglevel error --global
 
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
