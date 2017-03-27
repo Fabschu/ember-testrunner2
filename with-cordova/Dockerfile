@@ -34,3 +34,9 @@ RUN cd /opt && \
 	tar -xzf ${ANDROID_SDK_FILENAME} && \
 	rm ${ANDROID_SDK_FILENAME} && \
 	echo y | android update sdk --no-ui -a --filter tools,platform-tools,${ANDROID_API_LEVELS},build-tools-${ANDROID_BUILD_TOOLS_VERSION}
+
+#install imagemagick
+RUN apt-get update
+RUN apt-get install -y \
+    wget \
+    imagemagick 
