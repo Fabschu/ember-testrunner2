@@ -4,7 +4,7 @@ MAINTAINER Fabian Schulte <fabian.schulte@neomatt.de>
 # Install Node
 RUN apt-get update
 RUN apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 RUN apt-get update && \
 	apt-get install -y nodejs build-essential libfontconfig libfreetype6 libfontconfig1-dev libssl-dev libxft-dev automake autoconf git && \
 	apt-get clean
