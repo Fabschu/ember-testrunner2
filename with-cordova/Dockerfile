@@ -1,5 +1,5 @@
-FROM mensgis/ember-testrunner
-MAINTAINER Sven Lückenbach <sven@lueckenba.ch>
+FROM fabschu/ember-testrunner
+MAINTAINER Fabian Schulte <fabian.schulte@neomatt.de>
 
 RUN npm install -g cordova
 
