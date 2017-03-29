@@ -3,6 +3,9 @@ MAINTAINER Fabian Schulte <fabian.schulte@neomatt.de>
 
 RUN npm install -g cordova
 
+RUN apt-get update -y && \
+    apt-get install unzip
+
 # From webratio/java
 RUN apt-get update -y && \
     apt-get install -y software-properties-common && \
