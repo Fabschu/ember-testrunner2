@@ -24,6 +24,9 @@ RUN dpkg --add-architecture i386 && \
     apt-get autoremove -y && \
     apt-get clean
     
+RUN apt-get update -y && \
+    apt-get install -y unzip
+    
 ENV ANDROID_SDK_FILENAME android-sdk_r24.2-linux.tgz
 ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
 ENV ANDROID_API_LEVELS android-23
