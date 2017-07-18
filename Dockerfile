@@ -15,7 +15,7 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/so
 RUN sudo apt-get update && sudo apt-get install yarn
 
 # Global deps
-RUN npm install -g ember-cli@2.11.1 phantomjs@1.9.8 bower@1.7.1 xo cordova-icon cordova-splash lodash@">=4.3.0" elementtree@">=0.1.6" plist@">=1.2.0" xcode@">=0.8.9" colors@">=1.1.2" shelljs@">=0.7.0" tostr@">=0.1.0" jshint@">=2.6.0" got@">=6.5.0"
+RUN npm install -g ember-cli@2.12.3 phantomjs@1.9.8 bower@1.7.1 xo cordova-icon cordova-splash lodash@">=4.3.0" elementtree@">=0.1.6" plist@">=1.2.0" xcode@">=0.8.9" colors@">=1.1.2" shelljs@">=0.7.0" tostr@">=0.1.0" jshint@">=2.6.0" got@">=6.5.0"
 RUN npm config set loglevel error --global
 
 RUN echo '{ "allow_root": true }' > /root/.bowerrc
