@@ -36,11 +36,28 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 RUN cd /opt && \
 	wget -q ${ANDROID_SDK_URL} && \
 	tar -xzf ${ANDROID_SDK_FILENAME} && \
-	rm ${ANDROID_SDK_FILENAME} && \
-	echo y |android update sdk --no-ui -a --filter extra,tools,platform-tools,${ANDROID_API_LEVELS} && \
-	echo y |android update sdk --no-ui -a --filter build-tools-25.0.3 && \
-	echo y |android update sdk --no-ui -a --filter extra-android-m2repository && \
-	echo y |android update sdk --no-ui -a --filter extra-google-m2repository
+	rm ${ANDROID_SDK_FILENAME}
+	
+RUN echo y | android update sdk --no-ui --all --filter platform-tools | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter extra-android-support | grep 'package installed'
+	
+RUN echo y | android update sdk --no-ui --all --filter android-25 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter android-24 | grep 'package installed'
+
+RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.3 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.2 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.1 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-25.0.0 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.3 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.2 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-24.0.1 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.3 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.2 | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.1 | grep 'package installed'
+
+RUN echo y | android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter extra-google-m2repository | grep 'package installed'
+RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_services | grep 'package installed'
 
 #install imagemagick
 RUN apt-get update
@@ -49,7 +66,7 @@ RUN apt-get install -y \
     imagemagick 
 
 # Install Gradle
-RUN cd /usr/local/ && curl -L -O http://services.gradle.org/distributions/gradle-2.2.1-all.zip && unzip -o gradle-2.2.1-all.zip
-ENV GRADLE_HOME /usr/local/gradle-2.2.1
+RUN cd /usr/local/ && curl -L -O http://services.gradle.org/distributions/gradle-4.0.1-all.zip && unzip -o gradle-4.0.1-all.zip
+ENV GRADLE_HOME /usr/local/gradle-4.0.1
 ENV PATH $PATH:$GRADLE_HOME/bin
-RUN rm -rf /usr/local/gradle-2.2.1-all.zip
+RUN rm -rf /usr/local/gradle-4.0.1-all.zip
