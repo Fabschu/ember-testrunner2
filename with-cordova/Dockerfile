@@ -32,7 +32,8 @@ ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
 ENV ANDROID_API_LEVELS android-25
 ENV ANDROID_BUILD_TOOLS_VERSION 25.0.3
 ENV ANDROID_HOME /opt/android-sdk-linux
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+ENV PATH ${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${PATH}
+
 RUN cd /opt && \
 	wget -q ${ANDROID_SDK_URL} && \
 	tar -xzf ${ANDROID_SDK_FILENAME} && \
