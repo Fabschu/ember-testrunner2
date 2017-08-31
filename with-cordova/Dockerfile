@@ -30,7 +30,7 @@ RUN apt-get update -y && \
 ENV ANDROID_SDK_FILENAME android-sdk_r24.2-linux.tgz
 ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
 ENV ANDROID_API_LEVELS android-25
-ENV ANDROID_BUILD_TOOLS_VERSION 25.0.3
+ENV ANDROID_BUILD_TOOLS_VERSION 23.0.1
 ENV ANDROID_HOME /opt/android-sdk-linux
 ENV PATH ${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${PATH}
 
@@ -39,7 +39,7 @@ RUN cd /opt && \
 	tar -xzf ${ANDROID_SDK_FILENAME} && \
 	rm ${ANDROID_SDK_FILENAME} && \
 	echo y |android update sdk --no-ui -a --filter extra,tools,platform-tools,${ANDROID_API_LEVELS} && \
-	echo y |android update sdk --no-ui -a --filter build-tools-25.0.3 && \
+	echo y |android update sdk --no-ui -a --filter build-tools-23.0.1 && \
 	echo y |android update sdk --no-ui -a --filter extra-android-m2repository && \
 	echo y |android update sdk --no-ui -a --filter extra-google-m2repository
 	
