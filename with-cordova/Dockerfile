@@ -28,7 +28,7 @@ RUN apt-get update -y && \
     apt-get install -y unzip
     
 ENV ANDROID_SDK_VERSION=r25.2.3
-ENV ANDROID_BUILD_TOOLS_VERSION=build-tools-15,build-tools-16,build-tools-17,build-tools-18,build-tools-19,build-tools-20,build-tools-21,build-tools-22,build-tools-23,build-tools-24,build-tools-25
+ENV ANDROID_BUILD_TOOLS_VERSION=build-tools-25.0.3,build-tools-23.0.1
 ENV ANDROID_SDK_FILENAME=tools_${ANDROID_SDK_VERSION}-linux.zip
 ENV ANDROID_SDK_URL=https://dl.google.com/android/repository/${ANDROID_SDK_FILENAME}
 ENV ANDROID_API_LEVELS=android-15,android-16,android-17,android-18,android-19,android-20,android-21,android-22,android-23,android-24,android-25
