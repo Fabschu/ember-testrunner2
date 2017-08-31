@@ -27,21 +27,22 @@ RUN dpkg --add-architecture i386 && \
 RUN apt-get update -y && \
     apt-get install -y unzip
     
-ENV ANDROID_SDK_FILENAME android-sdk_r24.2-linux.tgz
-ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
-ENV ANDROID_API_LEVELS android-25
-ENV ANDROID_BUILD_TOOLS_VERSION 23.0.1
-ENV ANDROID_HOME /opt/android-sdk-linux
-ENV PATH ${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${PATH}
+ENV ANDROID_SDK_VERSION=r25.2.3
+ENV ANDROID_BUILD_TOOLS_VERSION=build-tools-15,build-tools-16,build-tools-17,build-tools-18,build-tools-19,build-tools-20,build-tools-21,build-tools-22,build-tools-23,build-tools-24,build-tools-25
+ENV ANDROID_SDK_FILENAME=tools_${ANDROID_SDK_VERSION}-linux.zip
+ENV ANDROID_SDK_URL=https://dl.google.com/android/repository/${ANDROID_SDK_FILENAME}
+ENV ANDROID_API_LEVELS=android-15,android-16,android-17,android-18,android-19,android-20,android-21,android-22,android-23,android-24,android-25
+ENV ANDROID_HOME=/opt/tools
+ENV PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 
 RUN cd /opt && \
-	wget -q ${ANDROID_SDK_URL} && \
-	tar -xzf ${ANDROID_SDK_FILENAME} && \
-	rm ${ANDROID_SDK_FILENAME} && \
-	echo y |android update sdk --no-ui -a --filter extra,tools,platform-tools,${ANDROID_API_LEVELS} && \
-	echo y |android update sdk --no-ui -a --filter build-tools-23.0.1 && \
-	echo y |android update sdk --no-ui -a --filter extra-android-m2repository && \
-	echo y |android update sdk --no-ui -a --filter extra-google-m2repository
+    curl -sSO ${ANDROID_SDK_URL} && \
+    unzip -q ${ANDROID_SDK_FILENAME} && \
+    rm -rf ${ANDROID_SDK_FILENAME} && \
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | ${ANDROID_HOME}/android -s --clear-cache update sdk --no-ui --force --all --filter tools,platform-tools,${ANDROID_BUILD_TOOLS_VERSION},extra-android-support,${ANDROID_API_LEVELS},extra-android-m2repository,extra-google-m2repository && \
+    mkdir -p "$ANDROID_HOME/licenses" && \
+    echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license" && \
+    echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
 	
 #install imagemagick
 RUN apt-get update
