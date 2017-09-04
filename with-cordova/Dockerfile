@@ -57,4 +57,4 @@ ENV GRADLE_HOME /usr/local/gradle-3.3
 ENV PATH $PATH:$GRADLE_HOME/bin
 RUN rm -rf /usr/local/gradle-3.3-all.zip
 
-touch /root/.android/repositories.cfg
+RUN touch /root/.android/repositories.cfg
