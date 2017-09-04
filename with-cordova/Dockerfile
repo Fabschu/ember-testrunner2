@@ -39,10 +39,10 @@ RUN cd /opt && \
     curl -sSO ${ANDROID_SDK_URL} && \
     unzip -q ${ANDROID_SDK_FILENAME} && \
     rm -rf ${ANDROID_SDK_FILENAME} && \
-    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | ${ANDROID_HOME}/android -s --clear-cache update sdk --no-ui --force --all --filter tools,platform-tools,${ANDROID_BUILD_TOOLS_VERSION},extra-android-support,${ANDROID_API_LEVELS},extra-android-m2repository,extra-google-m2repository && \
-    mkdir -p "$ANDROID_HOME/licenses" && \
-    echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license" && \
-    echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+    ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | ${ANDROID_HOME}/tools/android -s --clear-cache update sdk --no-ui --force --all --filter tools,platform-tools,${ANDROID_BUILD_TOOLS_VERSION},extra-android-support,${ANDROID_API_LEVELS},extra-android-m2repository,extra-google-m2repository && \
+    mkdir -p "$ANDROID_HOME/tools/licenses" && \
+    echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/tools/licenses/android-sdk-license" && \
+    echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/tools/licenses/android-sdk-preview-license"
 	
 #install imagemagick
 RUN apt-get update
