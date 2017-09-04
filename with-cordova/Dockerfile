@@ -51,7 +51,8 @@ RUN apt-get install -y \
     imagemagick 
 
 # Install Gradle
-RUN cd /usr/local/ && curl -L -O http://services.gradle.org/distributions/gradle-2.2.1-all.zip && unzip -o gradle-2.2.1-all.zip
-ENV GRADLE_HOME /usr/local/gradle-2.2.1
+
+RUN cd /usr/local/ && curl -L -O https://services.gradle.org/distributions/gradle-3.3-all.zip && unzip -o gradle-3.3-all.zip
+ENV GRADLE_HOME /usr/local/gradle-3.3
 ENV PATH $PATH:$GRADLE_HOME/bin
-RUN rm -rf /usr/local/gradle-2.2.1-all.zip
+RUN rm -rf /usr/local/gradle-3.3-all.zip
