@@ -53,9 +53,9 @@ RUN apt-get install -y \
 
 # Install Gradle
 
-RUN cd /usr/local/ && curl -L -O https://services.gradle.org/distributions/gradle-3.3-all.zip && unzip -o gradle-3.3-all.zip
-ENV GRADLE_HOME /usr/local/gradle-3.3
+RUN cd /usr/local/ && curl -L -O https://services.gradle.org/distributions/gradle-2.3-all.zip && unzip -o gradle-3.3-all.zip
+ENV GRADLE_HOME /usr/local/gradle-2.3
 ENV PATH $PATH:$GRADLE_HOME/bin
-RUN rm -rf /usr/local/gradle-3.3-all.zip
+RUN rm -rf /usr/local/gradle-2.3-all.zip
 
 RUN touch /root/.android/repositories.cfg
